@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POC</title>
+    <style>
+        .tooltip {
+          position: relative;
+          display: inline-block;
+          border-bottom: 1px dotted black;
+        }
+        
+        .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 15em;
+          height: fit-content;
+          background-color: black;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 5px 0;
+          
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 1;
+          
+          /* for right tooltip */
+          top: -5px;
+          left: 105%;
+
+          /* for bottom tooltip */
+          /* top: 100%;
+          left: 50%;
+          margin-left: -60px; */
+        }
+        
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">POC Application</h1>
+    <ul>
+        <li>
+            <a href="{{bucket_meta_path}}" target="_blank" class="tooltip">test bucket
+                <span class="tooltiptext">
+                    ?name=[bucket-name]
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="{{db_postgres_path}}" target="_blank" class="tooltip">test postgres db
+                <span class="tooltiptext">
+                    - ?project=[project-name] <br>
+                    - ?env_name=[env-name]    <br>
+                    - ?db_type=[database-type]<br>
+                </span>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

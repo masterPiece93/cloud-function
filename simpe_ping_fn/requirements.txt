@@ -1,0 +1,7 @@
+# Python 3.12
+environs
+psycopg2-binary
+Flask
+functions-framework
+google-cloud-storage
+cloud-sql-python-connector[pg8000]

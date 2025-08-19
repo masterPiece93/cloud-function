@@ -1,3 +1,8 @@
+# custom
+
+# for excluding service account files :
+*_sa.json 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

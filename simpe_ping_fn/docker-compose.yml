@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest # Or your desired PostgreSQL version
+    container_name: my-postgres-db
+    environment:
+      POSTGRES_DB: mydatabase # Name of your database
+      POSTGRES_USER: myuser # Username for your database
+      POSTGRES_PASSWORD: mypassword # Password for your database
+    ports:
+      - "5433:5432" # Maps host port 5432 to container port 5432
+#     volumes:
+#       - db_data:/var/lib/postgresql/data # Uncomment for Persistent storage for database data
+
+  gcs-emulator:
+    image: fsouza/fake-gcs-server:latest
+    container_name: fake-gcs-server
+    ports:
+      - "4443:4443" # HTTPS port
+      - "8000:8000" # HTTP port (optional, if using -scheme both)
+    command: ["-scheme", "both"]
+    # volumes:
+    #   - ./gcs-data:/data # Uncomment to persist data to a local directory
+
+
+# volumes:
+#   db_data:
