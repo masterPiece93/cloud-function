@@ -1,4 +1,5 @@
 # POC : Cloud Function 
+This is a minimal example cloud Fn to demonstrate pining to various services from within cloud fn .
 
 - testing cloud function connection to :
     - google bucket ( using emulator for local testing )
@@ -29,7 +30,7 @@ SA_FILE_PATH='datti_sa.json'
 ### Running Cloud Function
 
 - Create venv
-- Install requirements in it.
+- Install requirements in it ( using requirements.txt )
 - ```sh
     # running cloud function
     functions-framework --target hello_http --signature-type http --debug --port 8080
@@ -37,9 +38,12 @@ SA_FILE_PATH='datti_sa.json'
 
 ### Starting Services 
 For testing on local , we need 'google cloud storage' and 'postgres database' in our local.
-hence we use :
-    - gcs emulator ( via docker image )
-    - postgres db ( via docker image )
+hence we use
+
+1. gcs emulator ( via docker image )
+    
+2. postgres db ( via docker image )
+    
 we have added their configs in the `docker-compose.yml` file .
 Run the following command in a seperate terminal :
 ```sh
