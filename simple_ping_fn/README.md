@@ -7,8 +7,8 @@ This is a minimal example cloud Fn to demonstrate pining to various services fro
     - cloud sql ( can be tested on cloud function only )
 
 So we currently have two endpoints available 
-1. /bucket-meta : for testing bucket connection
-2. /db-conn : for testing db related connection
+1. **/bucket-meta** : for testing bucket connection
+2. **/db-conn** : for testing db related connection
     - for testing a new database , you need to add the credentials in the `test_db_conn.py` file .
 
 
