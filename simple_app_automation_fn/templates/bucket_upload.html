@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB-Update-Automation</title>
+    <style>
+        #notification {
+            background: black;
+            color: wheat;
+            padding: 1em;
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    {% if messages|length > 0 %}
+    <div id="notification">
+        
+            {% for item in messages %}
+                {{ item }}
+            {% endfor %}
+        
+    </div>
+    {% endif %}
+    <div id="Instructions" 
+    style="margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    cursor: context-menu;
+    background: lightsteelblue;
+    border: 0.1em solid lightblue;
+    border-radius: 7%;
+    text-align: center;
+    width: 5em;
+    overflow-wrap: break-word;
+    "
+    >Instructions</div>
+    <form id="bucket-form" method="POST" enctype="multipart/form-data" action="/do-bucket-upload">
+        <input id="FileInput" type="file" name="csv_file" style="color: darkred;">
+        <input id="Otp" type="text" name="otp" inputmode="numeric", pattern="\d{6}" maxlength="6" required placeholder="please enter otp">
+        <input type="submit" value="Upload">
+    </form>
+<script>
+    console.log("some issue")
+    // This script should run as soon as the page loads
+    window.onload = function() {
+        // Replace the current history entry with the current URL
+        // This prevents the user from going back to the 'old_page'
+        history.replaceState(null, null, window.location.href);
+                
+        
+    };
+    const fileInput = document.getElementById('FileInput');
+    fileInput.addEventListener('change', (event) => {
+        // Access the selected files
+        const selectedFiles = event.target.files;
+
+        // Process the selected files
+        if (selectedFiles.length > 0) {
+            fileInput.style.color = "green"
+            const firstFile = selectedFiles[0];
+            console.log('Selected file name:', firstFile.name);
+            console.log('Selected file size (bytes):', firstFile.size);
+            console.log('Selected file type:', firstFile.type);
+            
+            // Further processing, e.g., display file content, upload, etc.
+        } else {
+            fileInput.style.color = "darkred"
+        }
+    });
+    document.getElementById('bucket-form').addEventListener('submit', function(event) {
+            // Prevent default form submission to handle it with JavaScript
+            event.preventDefault();
+            
+            // Process form data here (e.g., send to server)
+            // const fileInput = document.getElementById('FileInput');
+            
+            if (fileInput.files.length === 0) {
+                // No file has been selected
+                alert("Please select a file.");
+            }
+            else {
+                
+                const form = document.getElementById('bucket-form');
+                form.submit();
+            }
+            
+            // Reset the form after successful submission
+            this.reset(); 
+        });
+        const instructions = document.getElementById('Instructions');
+        // Add a mouseover event listener
+        instructions.addEventListener('click', () => {
+            alert(`
+                Instruction :
+                    - File size must be < 1 MB 
+                    - You can generate only 3 otp's per day
+                    - you can submit form only once in 5 minutes
+            `)
+        });
+</script>
+</body>
+</html>

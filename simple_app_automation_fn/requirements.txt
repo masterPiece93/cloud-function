@@ -1,0 +1,6 @@
+psycopg2-binary
+Flask
+functions-framework
+pandas
+pyotp==2.9.0
+environs
